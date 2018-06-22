@@ -27,7 +27,6 @@ pipeline {
       steps {
         echo "${KERNEL_VERSION}"
       }
-    }
    }
   }
   environment {
