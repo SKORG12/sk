@@ -1,16 +1,22 @@
 pipeline {
   agent {
-    label 'jdk9'
+    label 'jdk8'
   }
   stages {
-    stage('Hello to Me') {
+    stage('Say Hello') {
       steps {
-        echo 'Hello Soudipta'
+        echo "Hello ${params.Name}!"
         sh 'java -version'
+        echo "${TEST_USER_USR}"
+        echo "${TEST_USER_PSW}"
       }
     }
   }
   environment {
     MY_NAME = 'Soudipta'
+    TEST_USER = credentials('test-user')
+  }
+  parameters {
+    string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to?')
   }
 }
